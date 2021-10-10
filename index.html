@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+
+<style>
+		@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+
+		
+
+		body{
+			background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV9gk4TLPRF6HAydT5ZjZv3MrkGnuWDVKH_A&usqp=CAU');
+			background-size: 100%;
+			background-position: bottom 90px right 20px;;
+		}
+
+		#div7{
+			height: 300px;
+			position: fixed;
+			top: 20%;
+			left: 50%;
+			transform: translate(-50%, -40%);
+			word-break: break-word; 
+			text-align: center;
+			white-space: pre-wrap;
+		}
+		
+		#buttons{
+			position: fixed;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			
+
+		}
+
+		.buttonword{
+			width: 50px;
+			height: 50px;
+			background-color: #9F8170;
+			transition-duration: 0.4s;
+			font-size: 30px;
+			
+		}
+		.buttonword:hover{
+			background-color: #B2BEB5;
+			width: 60px;
+			height: 60px;
+		}
+		#word{
+			left: 50%;
+			top: 60%; 
+			transform: translate(-50%, -30%); 
+			position: fixed; 
+			font-size: 30px;
+			
+			
+
+		}
+		#found{
+			left: 50%;
+			top: 5%;
+			transform: translate(-50%, -5%);
+			position: fixed;
+			word-break: break-word; 
+			white-space: pre-wrap;
+		}
+		*{
+			user-select: none;
+			font-family: 'Comfortaa', sans-serif;
+		}
+		#cross{
+			position: fixed;
+			font-size: 30px;
+			left: 50%;
+			top: 80%; 
+			transform: translate(-50%, -10%); 
+			font-size: 40px;
+			
+		}
+
+		#next{
+			width: 225px;
+			height: 125px;
+			position: fixed;
+			left: 90%;
+			top: 5%;
+			transform: translate(-50%, -5%);
+			font-size: 25px;
+		}
+		#help{
+			background-color: #fffdd0;
+			border: 20px solid #1B1811;
+			border-radius: 20px;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			width: 1200px;
+			height: 600px;
+			position: fixed;
+		}
+
+		#openhelp{
+			position: fixed;
+			top: 5%;
+			left: 1%;
+			transform: translate(-20%, 0%);
+		}
+		#lvlmenu{
+			position: fixed;
+			top: 80%;
+			left: 3%;
+			transform: translate(-20%, -50%);
+			width: 50px;
+		}
+		#save{
+			width: 200px;
+			position: fixed;
+			top: 20%;
+			left: 3%;
+			transform: translate(-20%, 0%);
+		}
+		#load{
+			width: 200px;
+			position: fixed;
+			top: 45%;
+			left: 3%;
+			transform: translate(-20%, 0%);
+		}
+		#saveinput{
+			width: 200px;
+			position: fixed;
+			top: 35%;
+			left: 3%;
+			transform: translate(-20%, -50%);
+			width: 150px;
+		}
+		#loadinput{
+			width: 200px;
+			position: fixed;
+			top: 60%;
+			left: 3%;
+			transform: translate(-20%, -50%);
+			width: 150px;
+		}
+		#loademall{
+			width: 75px;
+			position: fixed;
+			top: 60%;
+			left: 15%;
+			transform: translate(-20%, -50%);
+			width: 75px;
+		}
+		#lvlplus{
+			position: fixed;
+			top: 70%;
+			left: 3%;
+			transform: translate(-20%, -50%);
+			width: 50px;
+		}
+		#lvlminus{
+			position: fixed;
+			top: 90%;
+			left: 3%;
+			transform: translate(-20%, -50%);
+			width: 50px;
+		}
+
+		input{
+			font-size:18px;
+  			padding:10px 10px 10px 5px;
+  			display:block;
+  			width:300px;
+  			border:none;
+  			background-color: transparent;
+ 		 	border-bottom:1px solid #757575;
+ 		 	outline-width: 0;
+					}
+
+
+
+
+	</style>
+
+	
+</head>
+<body>
+	
+	<div id="buttons"></div>
+		<h1 id="word"></h1>
+		<div id="div7">
+		<h1 id="found"></h1></div>
+		<br><button class="buttonword" id="cross" onclick="cleart()">x</button><button class="buttonword" id="next" onclick="levl()">Далее</button>
+		<button id="openhelp" class="buttonword" onclick="openhelp()">?</button>
+		<button id="lvlplus" class="buttonword" onclick="lvlplus()">ᐱ</button>
+		<button id="lvlmenu" class="buttonword" onclick="lvlmenu()">1</button>
+		<button id="lvlminus" class="buttonword" onclick="lvlminus()">ᐯ</button>
+		<button id="save" class="buttonword" onclick="savegame()">Сохранить</button>
+		<button id="load" class="buttonword" onclick="loadgame()">Загрузить</button>
+		<button id="loademall" class="buttonword" onclick="loademall()">ОК</button>
+		<input type="text" id="loadinput">
+		<input type="text" id="saveinput">
+		<div id="help" onclick="closehelp()">ПРАВИЛА</div>
+	
+
+
+	<script>
+
+		document.getElementById("help").style = "display: none;"
+
+		var words = ["МНОЖИТЕЛЬ", "ПОКРЫВАЛО", "ГИПЕРБОЛА", "ЖЕМЧУЖИНА"]
+		var toFind = ['ЖИТЕЛЬ_ЛИМОН_НОЖ_МЕЛ_МЕЛЬ_ЛЬЕ_ТЕЛО_ЛЕТО_ЛОЖЕ_ЕЛЬ_ЛОЖЬ_ЛОМ_ТОМ_ТОН_ЛОТ_ОТЕЛЬ_ОЛЕНЬ_ЛЕНЬ_ЛЕН_ТЕНЬ_ТЛЕН_НОЛЬ_МОЛЬ_ЕНОТ_НИТЬ_ЖМОТ_НЕЖИТЬ_ОТМЕЛЬ_ЖИЛЕТ_ЖЕТОН_ЖИМ_ТМИН_МОТ_ЛЕТ', 'АКР_ВАЛ_ВАР_ВОЛ_ВОР_КОЛ_КОП_ЛАК_ЛОВ_ЛОР_ОКО_ОРК_ПАР_ПОЛ_ПЫЛ_РАК_РОВ_РОК_РОЛ_РЫК_ВОЛК_КАРП_КЛОП_КОПА_КРОВ_ЛАВР_ЛЫКО_ОВАЛ_ОКОВ_ОКОП_ОПАЛ_ОПОР_ПАРК_ПЛОВ_ПОЛК_ПОЛО_ПОРА_ПРОК_РАЛО_РЫЛО_ВОКАЛ_ВОЛОК_ВПРОК_КАПОР_КОВАР_КОРАЛ_КРЫЛО_ОПОРА_ОРАЛО_ПОВАЛ_ПОВАР_ПОЛКА_ПОЛОК_ПОРКА_ПОРОК_ПОРЫВ_ПРАВО_РЫВОК_КОРОВА_ПОКРОВ_ПРОВАЛ_ПРОКОЛ_ВЫПОРКА', 'АИЛ_БАЛ_БАР_БЕГ_БОГ_БОР_БРА_ГАЛ_ГОЛ_ИОГ_ЛАГ_ЛОБ_ЛОГ_ЛОР_ОГР_ПАБ_ПАР_ПИР_ПОЛ_РАБ_РОГ_БИЛО_БЛОГ_БОРА_БРЕГ_БРИГ_ГАЛО_ГЕРБ_ГЛЕБ_ГОРА_ГОРБ_ГОРЕ_ГРАБ_ГРЕБ_ГРИБ_ГРОБ_ИБЕР_ИГБО_ИГЛА_ИГРА_ИРГА_ЛИГА_ЛИПА_ЛИРА_ОПАЛ_ОРЕЛп_ПАРИ_ПЕРО_ПОЛЕ_ПОРА_РАЛО_РЕАЛ_РЕПА_РИАЛ_РОБА_БАГЕР_БАГОР_БЛАГО_ГАЛОП_ЛИБРА_ОПЕРА_ПЕРГА_ПИРОГ_ПОБЕГ_ПОЛБА_ПРОБА_РЕГБИ_ГРАБЛИ_ПЕРИЛА_ПОГРЕБ_ПРОБЕГ_ПРОБЕЛ_ПРОГАЛ_ПРОГИБ_БЕРЛОГА_ПЕРГОЛА', 'ЖЕНА_МЕЧ']
+		var toFindWhole2 = toFind.slice(0)
+
+		var levelGoal = [60, 70, 60, 70]
+		var chars = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM[]{};:<,>./?!@#$%^&*()_+=`~'
+
+		var finds = []
+
+		var toFindWhole = ''
+		var openedLevels = 0
+
+		for(var i = 0; i < toFind.length; i++){
+			toFindWhole += toFind[i] + '_'
+		}
+		toFindWhole = toFindWhole.split('_')
+
+		var found = []
+		for(var i = 0; i < toFind.length; i++){
+			found.push([])
+		}
+		
+
+		
+	
+		var level = 0
+		var text = []
+		var done = 0
+		var current = 0
+
+		document.getElementById("saveinput").style = "display: none;"
+		document.getElementById("loadinput").style = "display: none;"
+		document.getElementById("loademall").style = 'display: none;'
+		var saveShown = 0
+		var loadShown = 0
+
+		
+
+		function closehelp(){
+			document.getElementById("help").style = "display: none;"
+		}
+		function openhelp(){
+			document.getElementById("help").style = "display: rne;"
+		}
+		closehelp()
+
+		var len1 = toFind[level].length
+		for(var i = 0; i < toFind.length; i++){
+			toFind[i] = toFind[i].split('_')
+			toFindWhole2[i] = toFindWhole2[i].split('_')
+		}
+
+		
+
+		
+
+		len1 -= toFind[level].length
+
+		totalLen = len1
+
+		if(len1 > 1200){
+			
+			document.getElementById("div7").style = "width: 1200px;"
+			document.getElementById("found").style = "width: "  + 1200 + "px;" + "font-size: " + (44000 / (len1 * 2)) + "px;"
+
+		}else{
+		if(len1 < 300) len1 = 300
+		len1 *= 2
+		document.getElementById("div7").style = "width: "  + len1 + "px;" 
+		document.getElementById("found").style = "width: "  + len1 + "px;" + "font-size: " + 20 + "px;"
+		}
+
+
+		current = levelGoal[level] - found[openedLevels].join('').length
+		
+		
+		document.getElementById("next").innerHTML = "Уровень " + (openedLevels + 1) + ".<br>Букв до следующего: " + current
+		
+
+		function cleart(){
+			text = []
+			document.getElementById("word").innerHTML = ''
+			for(var i = 0; i < words[level].length; i++){
+				document.getElementById("let" + i).style = "opacity: 1;"
+				}
+		}
+
+		function levl(){
+			if(done == 1) openedLevels++
+			level = openedLevels
+			typedWord = ''
+			text = []
+			document.getElementById("word").innerHTML = ''
+			document.getElementById("lvlmenu").innerHTML = level + 1
+			document.getElementById("found").innerHTML = ''
+			document.getElementById("buttons").innerHTML = ''
+			for(var i=0;i<words[level].length;i++){
+			document.getElementById("buttons").innerHTML += "<button class='buttonword' id='let" + i + "' onclick='addLetter(" + '"' + words[level][i] + '", ' + i + ")'>" + words[level][i] + "</button>"
+			}
+			len1 = toFind[level].length
+
+
+		totalLen = toFind[level].length
+
+		len1 -= toFind[level].length
+
+		if(len1 > 1200){
+			
+			document.getElementById("div7").style = "width: 1200px;"
+			document.getElementById("found").style = "width: "  + 1200 + "px;" + "font-size: " + (44000 / (len1 * 2)) + "px;"
+
+		}else{
+		if(len1 < 300) len1 = 300
+		len1 *= 2
+		document.getElementById("div7").style = "width: "  + len1 + "px;" 
+		document.getElementById("found").style = "width: "  + len1 + "px;" + "font-size: " + 20 + "px;"
+		}
+
+		current = levelGoal[openedLevels] - found[openedLevels].join('').length
+		document.getElementById("next").innerHTML = "Уровень " + (openedLevels + 1) + ".<br>Букв до следующего: " + current
+		done = 0
+
+		for(var i = 0; i < found[level].length; i++){
+			document.getElementById("found").innerHTML += found[level][i]
+			document.getElementById("found").innerHTML += "  "
+		}
+		}
+
+
+		function addLetter(letter, wordi){
+			if(text.includes(wordi)){
+				text.splice(text.indexOf(wordi), 1)
+				document.getElementById("let" + wordi).style = "opacity: 1;"	
+			}else{
+			text.push(wordi)
+			document.getElementById("let" + wordi).style = "opacity: 0.5;"	
+			} 
+
+			var typedWord = ""
+			for(var i = 0; i < text.length;i++){
+				typedWord += words[level][text[i]]
+			}
+			//for(var i = 0; i < 17;i++){
+			//typedWord = toFind[level][Math.floor(Math.random() * toFind[level].length)]
+			//typedWord = toFind[level][0]
+			done = 0
+			if(toFind[level].includes(typedWord)){
+				document.getElementById("found").innerHTML += typedWord
+				document.getElementById("found").innerHTML += "  "
+				toFind[level].splice(toFind[level].indexOf(typedWord), 1)
+				found[level].push(typedWord)
+				text = []
+				for(var i = 0; i < words[level].length; i++){
+					document.getElementById("let" + i).style = "opacity: 1;"
+				}
+				if(level != openedLevels){
+					if(!(current <= typedWord.length)) typedWord = ''
+					document.getElementById("word").innerHTML = typedWord
+					return 9} 
+				if(current <= typedWord.length){
+				document.getElementById("next").innerHTML = "Далее"
+				current = -1
+				done = 1
+				}else{
+				current -= typedWord.length
+				document.getElementById("next").innerHTML = "Уровень " + (openedLevels + 1) + ".<br>Букв до следующего: " + current
+				}
+				typedWord = ''
+
+			} 
+			document.getElementById("word").innerHTML = typedWord
+
+			
+
+			//}
+
+
+
+			
+
+
+			
+		}
+
+		
+
+		for(var i=0;i<words[level].length;i++){
+			document.getElementById("buttons").innerHTML += "<button class='buttonword' id='let" + i + "' onclick='addLetter(" + '"' + words[level][i] + '", ' + i + ")'>" + words[level][i] + "</button>"
+		}
+		
+
+		function tempMakeFormat(){
+		var temp = 'аил бал бар бег бог бор бра гал гол иог иол лаг лоб лог лор огр паб пар пир пол раб рог рол арго арил бали баре бега беги белг бели бери била било биол блог бола боле бора боре брег бриг гаер гало геба гебр геол гера герб глеб гоби гора горб горе граб греб гриб грип гроб егор ибер игбо игла игра ирга лера либо лига липа лира лоре лори обер олег опал опер орал орел ориг пали пари пери перл перо пиар пила плие пола поле пора праг прил рало реал репа риал рига роба рогабагер багор багре берил биогр благо галоп гирло глоба горал греби ларго лепра либра обеги опали опера перга перил пирог побег погиб полба полег полир прибл проба рагби регби религ грабли перила погреб пробег пробел прогал прогиб берлога пергола'.split(' ')
+		var tmp2 = ''
+
+		for(var i = 0; i < temp.length; i++){
+			tmp2 += temp[i].toUpperCase() + '_'
+		}
+		console.log(tmp2)}
+
+		//tempMakeFormat()
+
+
+		function lvlmenu(){
+			
+			return 7
+
+			
+		}
+
+
+		function refreshLvl(){
+			if(level < 0){
+				level = 0
+				return 'nope'}
+			if(level > openedLevels){
+				level = openedLevels
+				return 'nope'}
+			text = []
+			document.getElementById("found").innerHTML = ''
+			document.getElementById("word").innerHTML = ''
+			document.getElementById("buttons").innerHTML = ''
+			for(var i=0;i<words[level].length;i++){
+			document.getElementById("buttons").innerHTML += "<button class='buttonword' id='let" + i + "' onclick='addLetter(" + '"' + words[level][i] + '", ' + i + ")'>" + words[level][i] + "</button>"
+			}
+			len1 = toFind[level].length
+
+
+		totalLen = toFind[level].length
+
+		len1 -= toFind[level].length
+
+		if(len1 > 1200){
+			
+			document.getElementById("div7").style = "width: 1200px;"
+			document.getElementById("found").style = "width: "  + 1200 + "px;" + "font-size: " + (44000 / (len1 * 2)) + "px;"
+
+		}else{
+		if(len1 < 300) len1 = 300
+		len1 *= 2
+		document.getElementById("div7").style = "width: "  + len1 + "px;" 
+		document.getElementById("found").style = "width: "  + len1 + "px;" + "font-size: " + 20 + "px;"
+		}
+
+		current = levelGoal[openedLevels] - found[openedLevels].join('').length
+		document.getElementById("next").innerHTML = "Уровень " + (openedLevels + 1) + ".<br>Букв до следующего: " + current
+				
+		
+		for(var i = 0; i < found[level].length; i++){
+			document.getElementById("found").innerHTML += found[level][i]
+			document.getElementById("found").innerHTML += "  "
+		}
+		document.getElementById("lvlmenu").innerHTML = level + 1
+		}
+
+
+
+		function lvlplus(){
+			level++
+			refreshLvl()
+		}
+		function lvlminus(){
+			level--
+			refreshLvl()
+		}
+
+
+
+
+
+
+		function getCode(){
+			var code = level + '-' + openedLevels + '-'
+
+			finds = []
+			for(var i = 0; i < found.length; i++){
+				finds = finds.concat(found[i])
+			}
+
+
+			for(var i = 0; i < toFindWhole.length-1; i++){
+				if(finds.includes(toFindWhole[i])){
+					code += chars[i % chars.length]
+					if(i % chars.length != i) code += (Math.floor(i / chars.length))
+				}
+			}
+
+			if(code[code.length - 1] == '-') code = ''
+		
+			
+			return code
+		}
+
+	function loadCode(code){
+		var levelWas = level
+		var levelsWere = openedLevels
+		try {
+		var coded = []
+		var recorded = ''
+		var id = 0
+		code = code.split('-')
+		if(code.length < 3) return "INVALID CODE ERROR 1596302748"
+		level = code[0]
+		openedLevels = Number(code[1])
+		code = code[2]
+		for(var i = 0; i < code.length; i++){
+			recorded += code[i]
+			if(chars.includes(code[i+1])){
+				coded.push(recorded)
+				recorded = ''
+			}
+		}
+		coded.push(recorded)
+
+
+
+		recorded = []
+		
+		for(var i = 0; i < coded.length; i++){
+			recorded.push(Number(chars.indexOf(coded[i][0])) + (chars.length * Number(coded[i].slice(1, coded[i].length))))
+		}
+
+
+
+
+
+	
+		var counter = -1
+		for(var i = 0; i < toFindWhole2.length; i++){
+			toFind[i] = []
+			found[i] = []
+			for(var i2 = 0; i2 < toFindWhole2[i].length; i2++){
+				counter++
+				if(!recorded.includes(counter)){
+					toFind[i].push(toFindWhole2[i][i2])
+				}else{
+					found[i].push(toFindWhole2[i][i2])
+				}
+		}
+		}
+
+
+
+
+
+			text = []
+			document.getElementById("found").innerHTML = ''
+			document.getElementById("word").innerHTML = ''
+			document.getElementById("buttons").innerHTML = ''
+			for(var i=0;i<words[level].length;i++){
+			document.getElementById("buttons").innerHTML += "<button class='buttonword' id='let" + i + "' onclick='addLetter(" + '"' + words[level][i] + '", ' + i + ")'>" + words[level][i] + "</button>"
+			}
+			len1 = toFind[level].length
+
+
+		totalLen = toFind[level].length
+
+		len1 -= toFind[level].length
+
+		if(len1 > 1200){
+			
+			document.getElementById("div7").style = "width: 1200px;"
+			document.getElementById("found").style = "width: "  + 1200 + "px;" + "font-size: " + (44000 / (len1 * 2)) + "px;"
+
+		}else{
+		if(len1 < 300) len1 = 300
+		len1 *= 2
+		document.getElementById("div7").style = "width: "  + len1 + "px;" 
+		document.getElementById("found").style = "width: "  + len1 + "px;" + "font-size: " + 20 + "px;"
+		}
+
+		current = levelGoal[openedLevels] - found[openedLevels].join('').length
+		if(current <= 0){
+				document.getElementById("next").innerHTML = "Далее"
+				current = -1
+				done = 1
+				}else{
+					document.getElementById("next").innerHTML = "Уровень " + (openedLevels + 1) + ".<br>Букв до следующего: " + current
+				}
+
+
+		for(var i = 0; i < found[level].length; i++){
+			document.getElementById("found").innerHTML += found[level][i]
+			document.getElementById("found").innerHTML += "  "
+		}
+
+
+
+		return recorded
+	} catch (e) {
+  	if (e instanceof TypeError) {
+    level = levelWas
+    openedLevels = levelsWere
+    refreshLvl()
+  }
+}
+		
+		
+	}
+
+
+	function savegame(){
+		var thing = document.getElementById("saveinput")
+		saveShown = 1 - saveShown
+		thing.style = ['display: none;', 'dispaly: hi;'][saveShown]
+		thing.value = getCode()
+	}
+	function loadgame(){
+		var thing = document.getElementById("loadinput")
+		loadShown = 1 - loadShown
+		thing.style = ['display: none;', 'dispaly: hi;'][loadShown]
+		document.getElementById("loademall").style = ['display: none;', 'dispaly: hi;'][loadShown]
+	}
+	function loademall(){
+		var thing = document.getElementById("loadinput")
+		loadCode(thing.value)
+		thing.value = ''
+		document.getElementById("loademall").style = 'display: none;'
+		thing.style = 'display: none;'
+	}
+
+
+
+
+</script>
+                                              
+
+</body>
+</html>
