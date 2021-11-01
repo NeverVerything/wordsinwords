@@ -10,9 +10,11 @@
 		
 
 		body{
-			background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV9gk4TLPRF6HAydT5ZjZv3MrkGnuWDVKH_A&usqp=CAU');
-			background-size: 100%;
-			background-position: bottom 90px right 20px;;
+			background: rgb(222,202,202);
+background: radial-gradient(circle, rgba(222,202,202,0.7547969871542367) 80%, rgba(233,229,219,1) 83%);
+  			background-size: 50%;
+  			overflow: hidden;
+  			height: 700vh;
 		}
 
 		#div7{
@@ -30,23 +32,20 @@
 			position: fixed;
 			left: 50%;
 			top: 50%;
-			transform: translate(-50%, -50%);
-			
-
-		}
+			transform: translate(-50%, -50%);}
 
 		.buttonword{
-			width: 50px;
-			height: 50px;
-			background-color: #9F8170;
+			width: 60px;
+			height: 60px;
+			background-color: #A67B5B;
 			transition-duration: 0.4s;
-			font-size: 30px;
+			font-size: 35px;
 			
 		}
 		.buttonword:hover{
-			background-color: #B2BEB5;
-			width: 60px;
-			height: 60px;
+			background-color: #EDC9AF;
+			width: 70px;
+			height: 70px;
 		}
 		#word{
 			left: 50%;
@@ -70,15 +69,7 @@
 			user-select: none;
 			font-family: 'Comfortaa', sans-serif;
 		}
-		#cross{
-			position: fixed;
-			font-size: 30px;
-			left: 50%;
-			top: 80%; 
-			transform: translate(-50%, -10%); 
-			font-size: 40px;
-			
-		}
+
 
 		#next{
 			width: 225px;
@@ -109,20 +100,22 @@
 		}
 		#lvlmenu{
 			position: fixed;
-			top: 80%;
-			left: 3%;
-			transform: translate(-20%, -50%);
-			width: 50px;
+			top: 90%;
+			left: 10%;
+			transform: translate(-5%, -50%);
+			width: 15%;
+			font-size: 30px;
+			height: 80px;
 		}
 		#save{
-			width: 200px;
+			width: 250px;
 			position: fixed;
 			top: 20%;
 			left: 3%;
 			transform: translate(-20%, 0%);
 		}
 		#load{
-			width: 200px;
+			width: 250px;
 			position: fixed;
 			top: 45%;
 			left: 3%;
@@ -135,6 +128,7 @@
 			left: 3%;
 			transform: translate(-20%, -50%);
 			width: 150px;
+			border: 4px solid #696969;
 		}
 		#loadinput{
 			width: 200px;
@@ -143,6 +137,7 @@
 			left: 3%;
 			transform: translate(-20%, -50%);
 			width: 150px;
+			border: 4px solid #696969;
 		}
 		#loademall{
 			width: 75px;
@@ -154,17 +149,34 @@
 		}
 		#lvlplus{
 			position: fixed;
-			top: 70%;
-			left: 3%;
-			transform: translate(-20%, -50%);
+			top: 90%;
+			left: 25%;
+			transform: translate(0%, -50%);
 			width: 50px;
+			height: 50px;
+			background-color: transparent;
+			border: none;
+			transition-duration: 0.5s;
+			font-weight: bold;
 		}
 		#lvlminus{
 			position: fixed;
 			top: 90%;
-			left: 3%;
-			transform: translate(-20%, -50%);
+			left: 5%;
+			transform: translate(0%, -50%);
 			width: 50px;
+			height: 50px;
+			background-color: transparent;
+			border: none;
+			transition-duration: 0.5s;
+			font-weight: bold;
+		}
+
+		#lvlplus:hover{
+			font-size: 50px;
+		}
+		#lvlminus:hover{
+			font-size: 50px;
 		}
 
 		input{
@@ -175,8 +187,117 @@
   			border:none;
   			background-color: transparent;
  		 	border-bottom:1px solid #757575;
- 		 	outline-width: 0;
-					}
+ 		 	outline-width: 0;}
+
+
+
+.box {
+  width: 40%;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.2);
+  padding: 35px;
+  border: 2px solid #fff;
+  border-radius: 20px/40px;
+  background-clip: padding-box;
+  text-align: center;
+}
+
+.button {
+  font-size: 40px;
+  font-family: Tahoma, Arial, sans-serif;
+  padding: 15px;
+  margin-left: 1%;
+  border: 5px solid #967117;
+  background: #C19A6B;
+  border-radius: 5px/10px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+  width: 50px;
+  display: inline-block;
+}
+.button:hover {
+  background: none;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 30%;
+  position: relative;
+  transition-duration: 0.5s;
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popup .close:hover {
+  color: #E14051;
+}
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+}
+
+@media screen and (max-width: 700px){
+  .box{
+    width: 70%;
+  }
+  .popup{
+    width: 70%;
+  }
+}
+
+#ultra{
+	text-align: center;
+}
+
+.menuel{
+margin-left: -50%;
+transition-duration: 1.5s;
+}
+
+#men{
+	width: 150px;
+	position: fixed;
+	margin-left: 89%;
+	margin-top: 43%;
+}
+
+.menuel{background-color: #98817B;}
+.menuel:hover{background-color: #696969;}
+.button{background: #C19A6B;}
+.button:hover{background: #C2B280;}
 
 
 
@@ -191,35 +312,54 @@
 		<h1 id="word"></h1>
 		<div id="div7">
 		<h1 id="found"></h1></div>
-		<br><button class="buttonword" id="cross" onclick="cleart()">x</button><button class="buttonword" id="next" onclick="levl()">Далее</button>
-		<button id="openhelp" class="buttonword" onclick="openhelp()">?</button>
-		<button id="lvlplus" class="buttonword" onclick="lvlplus()">ᐱ</button>
-		<button id="lvlmenu" class="buttonword" onclick="lvlmenu()">1</button>
-		<button id="lvlminus" class="buttonword" onclick="lvlminus()">ᐯ</button>
-		<button id="save" class="buttonword" onclick="savegame()">Сохранить</button>
-		<button id="load" class="buttonword" onclick="loadgame()">Загрузить</button>
-		<button id="loademall" class="buttonword" onclick="loademall()">ОК</button>
-		<input type="text" id="loadinput">
-		<input type="text" id="saveinput">
-		<div id="help" onclick="closehelp()">ПРАВИЛА</div>
+		<button class="buttonword" id="next" onclick="levl()">Далее</button>
+		<div id="ultra">
+	<a class="button menuel" href="#popup1" id="openhelp" onclick="normalrules()">?</a></div>
+
+
+		<button id="lvlplus" class="buttonword menuel" onclick="lvlplus()">></button>
+		<button id="lvlmenu" class="buttonword menuel" onclick="lvlmenu()">Уровень 1</button>
+		<button id="lvlminus" class="buttonword menuel" onclick="lvlminus()"><</button>
+		<button id="save" class="buttonword menuel" onclick="savegame()">Сохранить</button>
+		<button id="load" class="buttonword menuel" onclick="loadgame()">Загрузить</button>
+		<button id="loademall" class="buttonword menuel" onclick="loademall()">ОК</button>
+		<input type="text" id="loadinput" class="menuel">
+		<input type="text" id="saveinput" class="menuel">
+		<button id="men" onclick="men()" class="buttonword">Меню</button>
+
+
+		
+
+<div id="popup1" class="overlay">
+	<div class="popup">
+		<h2 id="helpheader">Правила и помощь</h2>
+		<a class="close" href="#">&times;</a>
+		<div class="content" id="rules">
+		</div>
+	</div>
+</div>
+
+
+
 	
 
 
 	<script>
 
-		document.getElementById("help").style = "display: none;"
 
-		var words = ["МНОЖИТЕЛЬ", "ПОКРЫВАЛО", "ГИПЕРБОЛА", "ЖЕМЧУЖИНА"]
-		var toFind = ['ЖИТЕЛЬ_ЛИМОН_НОЖ_МЕЛ_МЕЛЬ_ЛЬЕ_ТЕЛО_ЛЕТО_ЛОЖЕ_ЕЛЬ_ЛОЖЬ_ЛОМ_ТОМ_ТОН_ЛОТ_ОТЕЛЬ_ОЛЕНЬ_ЛЕНЬ_ЛЕН_ТЕНЬ_ТЛЕН_НОЛЬ_МОЛЬ_ЕНОТ_НИТЬ_ЖМОТ_НЕЖИТЬ_ОТМЕЛЬ_ЖИЛЕТ_ЖЕТОН_ЖИМ_ТМИН_МОТ_ЛЕТ', 'АКР_ВАЛ_ВАР_ВОЛ_ВОР_КОЛ_КОП_ЛАК_ЛОВ_ЛОР_ОКО_ОРК_ПАР_ПОЛ_ПЫЛ_РАК_РОВ_РОК_РОЛ_РЫК_ВОЛК_КАРП_КЛОП_КОПА_КРОВ_ЛАВР_ЛЫКО_ОВАЛ_ОКОВ_ОКОП_ОПАЛ_ОПОР_ПАРК_ПЛОВ_ПОЛК_ПОЛО_ПОРА_ПРОК_РАЛО_РЫЛО_ВОКАЛ_ВОЛОК_ВПРОК_КАПОР_КОВАР_КОРАЛ_КРЫЛО_ОПОРА_ОРАЛО_ПОВАЛ_ПОВАР_ПОЛКА_ПОЛОК_ПОРКА_ПОРОК_ПОРЫВ_ПРАВО_РЫВОК_КОРОВА_ПОКРОВ_ПРОВАЛ_ПРОКОЛ_ВЫПОРКА', 'АИЛ_БАЛ_БАР_БЕГ_БОГ_БОР_БРА_ГАЛ_ГОЛ_ИОГ_ЛАГ_ЛОБ_ЛОГ_ЛОР_ОГР_ПАБ_ПАР_ПИР_ПОЛ_РАБ_РОГ_БИЛО_БЛОГ_БОРА_БРЕГ_БРИГ_ГАЛО_ГЕРБ_ГЛЕБ_ГОРА_ГОРБ_ГОРЕ_ГРАБ_ГРЕБ_ГРИБ_ГРОБ_ИБЕР_ИГБО_ИГЛА_ИГРА_ИРГА_ЛИГА_ЛИПА_ЛИРА_ОПАЛ_ОРЕЛп_ПАРИ_ПЕРО_ПОЛЕ_ПОРА_РАЛО_РЕАЛ_РЕПА_РИАЛ_РОБА_БАГЕР_БАГОР_БЛАГО_ГАЛОП_ЛИБРА_ОПЕРА_ПЕРГА_ПИРОГ_ПОБЕГ_ПОЛБА_ПРОБА_РЕГБИ_ГРАБЛИ_ПЕРИЛА_ПОГРЕБ_ПРОБЕГ_ПРОБЕЛ_ПРОГАЛ_ПРОГИБ_БЕРЛОГА_ПЕРГОЛА', 'ЖЕНА_МЕЧ']
+
+		var words = ["МНОЖИТЕЛЬ", "ПОКРЫВАЛО", "ГИПЕРБОЛА", "ЖЕМЧУЖИНА", "АЭРОЛОГИЯ", /*"ПРОТЕКТОР"*/]
+		var toFind = ['ЖИТЕЛЬ_ЛИМОН_НОЖ_МЕЛ_МЕЛЬ_ЛЬЕ_ТЕЛО_ЛЕТО_ЛОЖЕ_ЕЛЬ_ЛОЖЬ_ЛОМ_ТОМ_ТОН_ЛОТ_ОТЕЛЬ_ОЛЕНЬ_ЛЕНЬ_ЛЕН_ТЕНЬ_ТЛЕН_НОЛЬ_МОЛЬ_ЕНОТ_НИТЬ_ЖМОТ_НЕЖИТЬ_ОТМЕЛЬ_ЖИЛЕТ_ЖЕТОН_ЖИМ_ТМИН_МОТ_ЛЕТ_МОТЕЛЬ', 'АКР_ВАЛ_ВАР_ВОЛ_ВОР_КОЛ_КОП_ЛАК_ЛОВ_ЛОР_ОКО_ОРК_ПАР_ПОЛ_ПЫЛ_РАК_РОВ_РОК_РОЛ_РЫК_ВОЛК_КАРП_КЛОП_КОПА_КРОВ_ЛАВР_ЛЫКО_ОВАЛ_ОКОВ_ОКОП_ОПАЛ_ОПОР_ПАРК_ПЛОВ_ПОЛК_ПОЛО_ПОРА_ПРОК_РАЛО_РЫЛО_ВОКАЛ_ВОЛОК_ВПРОК_КАПОР_КОВАР_КОРАЛ_КРЫЛО_ОПОРА_ОРАЛО_ПОВАЛ_ПОВАР_ПОЛКА_ПОЛОК_ПОРКА_ПОРОК_ПОРЫВ_ПРАВО_РЫВОК_КОРОВА_ПОКРОВ_ПРОВАЛ_ПРОКОЛ_ВЫПОРКА', 'АИЛ_БАЛ_БАР_БЕГ_БОГ_БОР_БРА_ГАЛ_ГОЛ_ИОГ_ЛАГ_ЛОБ_ЛОГ_ЛОР_ОГР_ПАБ_ПАР_ПИР_ПОЛ_РАБ_РОГ_БИЛО_БЛОГ_БОРА_БРЕГ_БРИГ_ГАЛО_ГЕРБ_ГЛЕБ_ГОРА_ГОРБ_ГОРЕ_ГРАБ_ГРЕБ_ГРИБ_ГРОБ_ИБЕР_ИГБО_ИГЛА_ИГРА_ИРГА_ЛИГА_ЛИПА_ЛИРА_ОПАЛ_ОРЕЛ_ПАРИ_ПЕРО_ПОЛЕ_ПОРА_РАЛО_РЕАЛ_РЕПА_РИАЛ_РОБА_БАГЕР_БАГОР_БЛАГО_ГАЛОП_ЛИБРА_ОПЕРА_ПЕРГА_ПИРОГ_ПОБЕГ_ПОЛБА_ПРОБА_РЕГБИ_ГРАБЛИ_ПЕРИЛА_ПОГРЕБ_ПРОБЕГ_ПРОБЕЛ_ПРОГАЛ_ПРОГИБ_БЕРЛОГА_ПЕРГОЛА', 'ЖИМ_ИЖЕ_МЕЧ_МУЖ_НИМ_УЕМ_ЧАН_ЧИЖ_ЧИН_ЧУМ_АМИН_ЖЕНА_ЖИЖА_ИНАМ_МЕЖА_МЕНА_МИНА_НАЕМ_НЕУЧ_УЖИН_ЧУНИ_АНИМЕ_МАНЕЖ_НАЖИМ_МУЖАНИЕ_МУЖЧИНА', 'АИЛ_АИР_ГАЛ_ГОЛ_ИГО_ИОГ_ЛАГ_ЛАО_ЛОГ_ЛОР_ОЛА_ОРА_ОРГ_РОГ_РОЛ_ЭГО_ЭРА_ЭРГ_ЭРИ_ЭРЛ_ЯРЛ_АЛОЭ_АРИЛ_АРИЯ_ГАЛО_ГАЯЛ_ГИРЯ_ГОРА_ИГЛА_ИГРА_ИРГА_ЛИГА_ЛИРА_ЛОРИ_ЛОРО_ОРИЯ_РАЛО_РИАЛ_РИГА_РИЯЛ_ГОРАЛ_ГОРЛО_ОРАЛО_ОРГИЯ_АЭРОЛОГ']
 		var toFindWhole2 = toFind.slice(0)
 
-		var levelGoal = [60, 70, 60, 70]
-		var chars = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM[]{};:<,>./?!@#$%^&*()_+=`~'
+		var levelGoal = [60, 70, 60, 70, 50]
+		var chars = 'uiVB};:<dfghjklzqwWEKLZXC)_FGHJmQbnx#$%^&*(o+=`~@TYUIOPAS[]{ertypas!cvNM?,>./DR'
 
 		var finds = []
 
 		var toFindWhole = ''
 		var openedLevels = 0
+		var menuShown = 0
 
 		for(var i = 0; i < toFind.length; i++){
 			toFindWhole += toFind[i] + '_'
@@ -239,21 +379,19 @@
 		var done = 0
 		var current = 0
 
+		const rules = "Как составить слово<br>Правила игры очень просты. Нужно собрать как можно больше слов из доступных букв, выбирая их по порядку щелчком мыши. Повторный клик снимет выделение с буквы, а клавиша ESC отменит всё слово.<br>Как только игра распознает буквенную последовательность, она автоматически внесёт слово в список и приблизит вас к следующему уровню.<br><br>Условия подбора:<br><br>Существительное единственного числа (отвечает на вопросы «кто?» или «что?»);<br>нарицательное (относится к обозначению группы предметов или лиц, например: город, певец — подходящие слова, а Москва или Бузова — не подходящие);<br>состоит из 3 букв и больше.<br><br>Текстовый банк игры не идеален, но большая его часть всё же обогатит ваш словарный запас и порадует новыми открытиями. Приятного прохождения в любое время!"
+
 		document.getElementById("saveinput").style = "display: none;"
 		document.getElementById("loadinput").style = "display: none;"
 		document.getElementById("loademall").style = 'display: none;'
-		var saveShown = 0
-		var loadShown = 0
+		document.getElementById("rules").innerHTML = rules
+
+		var saveShown = 1
+		var loadShown = 1
 
 		
 
-		function closehelp(){
-			document.getElementById("help").style = "display: none;"
-		}
-		function openhelp(){
-			document.getElementById("help").style = "display: rne;"
-		}
-		closehelp()
+
 
 		var len1 = toFind[level].length
 		for(var i = 0; i < toFind.length; i++){
@@ -285,16 +423,18 @@
 		current = levelGoal[level] - found[openedLevels].join('').length
 		
 		
-		document.getElementById("next").innerHTML = "Уровень " + (openedLevels + 1) + ".<br>Букв до следующего: " + current
+		document.getElementById("next").innerHTML = "Уровень " + (openedLevels + 1) + " - букв осталось: " + current
 		
 
-		function cleart(){
+		document.addEventListener("keydown", function(event){
+			if(event.keyCode == 27){
 			text = []
+			typedWord = ''
 			document.getElementById("word").innerHTML = ''
 			for(var i = 0; i < words[level].length; i++){
 				document.getElementById("let" + i).style = "opacity: 1;"
-				}
-		}
+				}}
+		})
 
 		function levl(){
 			if(done == 1) openedLevels++
@@ -302,7 +442,7 @@
 			typedWord = ''
 			text = []
 			document.getElementById("word").innerHTML = ''
-			document.getElementById("lvlmenu").innerHTML = level + 1
+			document.getElementById("lvlmenu").innerHTML = 'Уровень ' + (Number(level) + 1)
 			document.getElementById("found").innerHTML = ''
 			document.getElementById("buttons").innerHTML = ''
 			for(var i=0;i<words[level].length;i++){
@@ -328,7 +468,7 @@
 		}
 
 		current = levelGoal[openedLevels] - found[openedLevels].join('').length
-		document.getElementById("next").innerHTML = "Уровень " + (openedLevels + 1) + ".<br>Букв до следующего: " + current
+		document.getElementById("next").innerHTML = "Уровень " + (openedLevels + 1) + " - букв осталось: " + current
 		done = 0
 
 		for(var i = 0; i < found[level].length; i++){
@@ -374,7 +514,7 @@
 				done = 1
 				}else{
 				current -= typedWord.length
-				document.getElementById("next").innerHTML = "Уровень " + (openedLevels + 1) + ".<br>Букв до следующего: " + current
+				document.getElementById("next").innerHTML = "Уровень " + (openedLevels + 1) + " - букв осталось: " + current
 				}
 				typedWord = ''
 
@@ -401,7 +541,7 @@
 		
 
 		function tempMakeFormat(){
-		var temp = 'аил бал бар бег бог бор бра гал гол иог иол лаг лоб лог лор огр паб пар пир пол раб рог рол арго арил бали баре бега беги белг бели бери била било биол блог бола боле бора боре брег бриг гаер гало геба гебр геол гера герб глеб гоби гора горб горе граб греб гриб грип гроб егор ибер игбо игла игра ирга лера либо лига липа лира лоре лори обер олег опал опер орал орел ориг пали пари пери перл перо пиар пила плие пола поле пора праг прил рало реал репа риал рига роба рогабагер багор багре берил биогр благо галоп гирло глоба горал греби ларго лепра либра обеги опали опера перга перил пирог побег погиб полба полег полир прибл проба рагби регби религ грабли перила погреб пробег пробел прогал прогиб берлога пергола'.split(' ')
+		var temp = 'аил аир гал гол иго иог лаг лао лог лор ола ора орг рог рол эго эра эрг эри эрл ярл алоэ арил ария гало гаял гиря гора игла игра ирга лига лира лори лоро ория рало риал рига риял горал горло орало оргия аэролог'.split(' ')
 		var tmp2 = ''
 
 		for(var i = 0; i < temp.length; i++){
@@ -413,9 +553,25 @@
 
 
 		function lvlmenu(){
+			var lenwords = [0, 0, 0, 0, 0, 0, 0]
+			var foundlenwords = [0, 0, 0, 0, 0, 0, 0]
+			for(var i = 0; i < toFindWhole2[level].length;i++){
+				lenwords[toFindWhole2[level][i].length - 3] += 1
+			}
+			for(var i = 0; i < found[level].length;i++){
+				foundlenwords[found[level][i].length - 3] += 1
+			}
 			
-			return 7
-
+			
+			document.getElementById("openhelp").click()
+			document.getElementById("rules").style = "font-size: 30px;"
+			document.getElementById("helpheader").innerHTML = "Статистика - уровень " + (Number(level) + 1)
+			document.getElementById("rules").innerHTML = "Всего слов: " + found[level].length + " из " + toFindWhole2[level].length
+			document.getElementById("rules").innerHTML += "<br>Всего букв: " + found[level].join('').length + " из " + toFindWhole2[level].join('').length + "<br><br>"
+			for(var i = 0; i < 6; i++){
+				document.getElementById("rules").innerHTML += "Слова из " + (i + 3) + " букв: " + foundlenwords[i] + " из " + lenwords[i] + "<br>"
+			}
+			
 			
 		}
 
@@ -454,14 +610,14 @@
 		}
 
 		current = levelGoal[openedLevels] - found[openedLevels].join('').length
-		document.getElementById("next").innerHTML = "Уровень " + (openedLevels + 1) + ".<br>Букв до следующего: " + current
+		document.getElementById("next").innerHTML = "Уровень " + (openedLevels + 1) + " - букв осталось: " + current
 				
 		
 		for(var i = 0; i < found[level].length; i++){
 			document.getElementById("found").innerHTML += found[level][i]
 			document.getElementById("found").innerHTML += "  "
 		}
-		document.getElementById("lvlmenu").innerHTML = level + 1
+		document.getElementById("lvlmenu").innerHTML = 'Уровень ' + (Number(level) + 1)
 		}
 
 
@@ -586,7 +742,7 @@
 				current = -1
 				done = 1
 				}else{
-					document.getElementById("next").innerHTML = "Уровень " + (openedLevels + 1) + ".<br>Букв до следующего: " + current
+					document.getElementById("next").innerHTML = "Уровень " + (openedLevels + 1) + " - букв осталось: " + current
 				}
 
 
@@ -596,7 +752,7 @@
 		}
 
 
-
+		refreshLvl()
 		return recorded
 	} catch (e) {
   	if (e instanceof TypeError) {
@@ -613,14 +769,14 @@
 	function savegame(){
 		var thing = document.getElementById("saveinput")
 		saveShown = 1 - saveShown
-		thing.style = ['display: none;', 'dispaly: hi;'][saveShown]
+		thing.style = ['display: none;', 'dispaly: hi;'][saveShown] + "margin-left: 5%;"
 		thing.value = getCode()
 	}
 	function loadgame(){
 		var thing = document.getElementById("loadinput")
 		loadShown = 1 - loadShown
-		thing.style = ['display: none;', 'dispaly: hi;'][loadShown]
-		document.getElementById("loademall").style = ['display: none;', 'dispaly: hi;'][loadShown]
+		thing.style = ['display: none;', 'dispaly: hi;'][loadShown] + "margin-left: 5%;"
+		document.getElementById("loademall").style = ['display: none;', 'dispaly: hi;'][loadShown] + "margin-left: 5%;"
 	}
 	function loademall(){
 		var thing = document.getElementById("loadinput")
@@ -628,6 +784,39 @@
 		thing.value = ''
 		document.getElementById("loademall").style = 'display: none;'
 		thing.style = 'display: none;'
+	}
+
+	function normalrules(){
+		document.getElementById("rules").innerHTML = rules
+		document.getElementById("helpheader").innerHTML = "Правила и помощь"
+		document.getElementById("rules").style = "font-size: 17px;"}
+
+
+	function men(){
+		menuShown = 1 - menuShown
+		if(menuShown == 1){
+		document.getElementById("load").style = "margin-left: 5%;"
+		document.getElementById("save").style = "margin-left: 5%;"
+		document.getElementById("lvlplus").style = "margin-left: 5%;"
+		document.getElementById("lvlmenu").style = "margin-left: 5%;"
+		document.getElementById("loademall").style = 'display: none; margin-left: 5%;'
+		document.getElementById("lvlminus").style = "margin-left: 5%;"
+		document.getElementById("loadinput").style = 'display: none; margin-left: 5%;'
+		document.getElementById("saveinput").style = 'display: none; margin-left: 5%;'
+		document.getElementById("openhelp").style = "margin-left: 5%;"
+		saveShown = 0
+		loadShown = 0}
+		if(menuShown == 0){
+		document.getElementById("load").style = "margin-left: -50%;"
+		document.getElementById("save").style = "margin-left: -50%;"
+		document.getElementById("lvlplus").style = "margin-left: -50%;"
+		document.getElementById("lvlmenu").style = "margin-left: -50%;"
+		document.getElementById("loademall").style = 'display: none; margin-left: -50%;'
+		document.getElementById("lvlminus").style = "margin-left: -50%;"
+		document.getElementById("loadinput").style = 'display: none; margin-left: -50%;'
+		document.getElementById("saveinput").style = 'display: none; margin-left: -50%;'
+		document.getElementById("openhelp").style = "margin-left: -50%;"}
+
 	}
 
 
